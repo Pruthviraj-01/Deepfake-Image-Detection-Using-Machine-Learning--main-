@@ -7,7 +7,8 @@ A full-stack web application that uses a Convolutional Neural Network (CNN) buil
 
 ---
 
-<img width="313" height="113" alt="image" src="https://github.com/user-attachments/assets/31775992-a00d-42b2-a1ab-f218cd93c4ce" />
+<img width="367" height="223" alt="image" src="https://github.com/user-attachments/assets/76311cb6-0131-4ff5-868d-a4b8540b87fd" />
+
 
 ---
 
