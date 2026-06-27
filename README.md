@@ -1,5 +1,3 @@
-# AI-Powered-Resume-Screener-
-
 # Theoretical Framework: AI-Integrated Full-Stack Resume Builder
 
 ## 🏛️ Project Abstract
@@ -56,7 +54,8 @@ Based on the application blueprints, the platform implements specialized layout 
                                                       (Requires Account)
                                                               │
 [Main Builder Dashboard]  <──  [Authentication System] <──────┘
-(Data Capture Form Matrix)     (Login / Account Creation)
+(Data Capture Form Matrix)     (Login / Account Creation) 
+
 🔐 1. Identity & Account Lifecycle
 The user begins at the landing page and proceeds to sign up or log in. The system evaluates whether credentials meet basic length and validation constraints. Once verified, the interface unlocks the restricted internal application states.
 
