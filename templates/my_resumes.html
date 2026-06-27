@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Resumes - Resume Builder</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <style>
+    /* Content Layout */
+    .main-content {
+      margin-left: 250px; /* Aligns with sidebar */
+      padding: 30px;
+      min-height: 100vh;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    /* Responsive Grid for Resumes */
+    .resumes-list {
+      display: grid;
+      /* Automatically creates columns that are at least 300px wide */
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    /* Resume Card Styling */
+    .resume-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+      transition: transform 0.2s;
+    }
+
+    .resume-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    .resume-card h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .resume-card p {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    /* Button Group Styling */
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap; /* Buttons wrap on very narrow screens */
+    }
+
+    .resume-card button {
+      flex: 1; /* Buttons take equal width */
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-download { background: #007bff; color: white; }
+    .btn-edit { background: #f8f9fa; color: #333; border: 1px solid #ddd; }
+
+    .btn-download:hover { background: #0056b3; }
+    .btn-edit:hover { background: #e2e6ea; }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 768px) {
+      .main-content {
+        margin-left: 0; /* Full width on mobile */
+        padding: 20px;
+      }
+
+      .resumes-list {
+        grid-template-columns: 1fr; /* Single column on mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+  {% include 'sidebar.html' %}
+
+  <div class="main-content">
+    <header>
+      <h2>My Resumes</h2>
+      <div class="user-icon" style="font-size: 2rem; color: #007bff;">
+        <i class="fas fa-user-circle"></i>
+      </div>
+    </header>
+
+    <section class="resumes-list">
+      <div class="resume-card">
+        <h3>Modern Professional</h3>
+        <p><i class="far fa-calendar-alt"></i> Last updated: 25 Sep 2025</p>
+        <div class="card-actions">
+          <button class="btn-download"><i class="fas fa-download"></i> PDF</button>
+          <button class="btn-edit"><i class="fas fa-edit"></i> Edit</button>
+        </div>
+      </div>
+
+      <div class="resume-card">
+        <h3>Creative Resume</h3>
+        <p><i class="far fa-calendar-alt"></i> Last updated: 22 Sep 2025</p>
+        <div class="card-actions">
+          <button class="btn-download"><i class="fas fa-download"></i> PDF</button>
+          <button class="btn-edit"><i class="fas fa-edit"></i> Edit</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

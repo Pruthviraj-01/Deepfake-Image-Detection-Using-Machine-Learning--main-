@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Builder — Build a professional CV in minutes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; font-family: 'Segoe UI', sans-serif; }
+    body { background-color: #87CEEB; color: #222; line-height: 1.6; }
+    a { text-decoration: none; cursor: pointer; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #ffffff; border-bottom: 1px solid #ccc; position: sticky; top: 0; z-index: 1000; }
+    .brand img { height: 50px; }
+    .nav-links { display: flex; gap: 1rem; align-items: center; }
+    .nav-links a { padding: 0.5rem 1rem; border-radius: 4px; font-weight: bold; color: #007bff; border: 1px solid #007bff; }
+    .nav-links a:hover { background: #007bff; color: #fff; transform: scale(1.05); }
+    .get-started { background: #007bff; color: #fff !important; border: none; }
+    .get-started:hover { background: #28a745; transform: scale(1.1); box-shadow: 0 0 15px rgba(40, 167, 69, 0.8); }
+    .hamburger { display: none; font-size: 26px; cursor: pointer; color: #007bff; border: 1px solid #007bff; padding: 6px 10px; border-radius: 4px; }
+    .mobile-menu { display: none; flex-direction: column; width: 100%; background: #fff; padding: 1rem; border-top: 1px solid #ccc; animation: slideDown 0.3s ease; }
+    .mobile-menu a { padding: 0.8rem; color: #007bff; font-weight: bold; border-bottom: 1px solid #ddd; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    #hero { position: relative; text-align: center; padding: 6rem 1rem; color: white; overflow: hidden; }
+    #hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; filter: blur(6px) brightness(0.6); z-index: -2; animation: slideshow 8s infinite linear; }
+    @keyframes slideshow { 0% { background-image: url("https://media.istockphoto.com/id/1349094945/photo/human-using-a-computer-laptop-for-searching-for-job-and-fill-out-personal-data-on-job-website.jpg?s=612x612&w=0&k=20&c=nVCY302pin29eP1rN0eBGstQN3WF4YQTWvZ4TvAs21g="); } 50% { background-image: url("https://cdn.pixabay.com/photo/2021/11/14/18/36/telework-6795505_1280.jpg"); } 100% { background-image: url("https://media.istockphoto.com/id/1349094945/photo/human-using-a-computer-laptop-for-searching-for-job-and-fill-out-personal-data-on-job-website.jpg?s=612x612&w=0&k=20&c=nVCY302pin29eP1rN0eBGstQN3WF4YQTWvZ4TvAs21g="); } }
+    #hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    #hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+    #hero a { background: #007bff; padding: 0.8rem 1.5rem; border-radius: 5px; font-weight: bold; color: white; display: inline-block; }
+    section { padding: 3rem 1.5rem; }
+    #features, #templates { background: #e0f7fa; border-top: 1px solid #bbb; }
+    #features h2, #templates h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
+    .features-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1200px; margin: auto; }
+    .feature { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align: center; }
+    .feature i { font-size: 2rem; color: #007bff; margin-bottom: 0.5rem; display: block; }
+    .templates-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; justify-items: center; max-width: 1000px; margin: auto; }
+    .template-card { width: 100%; text-align: center; border-radius: 8px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); overflow: hidden;}
+    .template-card img { width: 100%; height: auto; max-height: 500px; object-fit: cover; }
+    .template-card button { background: #007bff; color: #fff; padding: 0.7rem 2rem; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 1.5rem; }
+    footer { text-align: center; padding: 1.5rem; background: #ffffff; border-top: 1px solid #ccc; color: #555; }
+    .social-icons a { margin: 0 0.5rem; color: #555; font-size: 1.2rem; }
+    @media (max-width: 1024px) { .features-container { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: block; } #hero h2 { font-size: 1.8rem; } .templates-container { grid-template-columns: 1fr; } .features-container { grid-template-columns: 1fr; } .template-card img { height: 350px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><img src="https://via.placeholder.com/150x50?text=LOGO" alt="Logo"></div>
+    <nav class="nav-links">
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="#templates" class="get-started">Get Started</a>
+    </nav>
+    <i class="fas fa-bars hamburger" id="menuToggle"></i>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features">Features</a>
+    <a href="#templates">Choose a Template</a>
+    <a href="login.html">Login</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="#templates">Get Started</a>
+  </div>
+
+  <section id="hero">
+    <h2>Build a professional resume in minutes</h2>
+    <p>Choose a recruiter-approved template, fill your details, and download a printable PDF.</p>
+    <a href="#templates">Create My Resume</a>
+  </section>
+
+  <section id="features">
+    <h2>Features</h2>
+    <div class="features-container">
+      <div class="feature"><i class="fas fa-file-alt"></i><h3>Templates</h3><p>Modern, ATS-friendly designs for every role.</p></div>
+      <div class="feature"><i class="fas fa-envelope-open-text"></i><h3>Cover Letters</h3><p>One-click cover letter generation.</p></div>
+      <div class="feature"><i class="fas fa-file-export"></i><h3>Export & Track</h3><p>PDF downloads & public resume link.</p></div>
+      <div class="feature"><i class="fas fa-eye"></i><h3>Live Preview</h3><p>See changes in real time.</p></div>
+    </div>
+  </section>
+
+  <section id="templates">
+    <h2>Choose a Template</h2>
+    <div class="templates-container">
+      <div class="template-card">
+        <img src="https://i.pinimg.com/736x/01/6f/44/016f442a7751ebe6978c1573547b509b.jpg" alt="Modern">
+        <h3>Modern Professional</h3>
+        <p>Best for experienced professionals</p>
+        <button onclick="location.href='signup.html'">Use This Template</button>
+      </div>
+      <div class="template-card">
+        <img src="https://cdn-blog.novoresume.com/articles/creative-resume-templates/creative-resume-example-1.webp" alt="Creative">
+        <h3>Creative</h3>
+        <p>Color accents for designers</p>
+        <button onclick="location.href='signup.html'">Use This Template</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Resume Builder — <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isVisible = mobileMenu.style.display === 'flex';
+      mobileMenu.style.display = isVisible ? 'none' : 'flex';
+      menuToggle.classList.toggle('fa-bars');
+      menuToggle.classList.toggle('fa-xmark');
+    });
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.style.display = 'none';
+        menuToggle.classList.add('fa-bars');
+        menuToggle.classList.remove('fa-xmark');
+      });
+    });
+  </script>
+</body>
+</html>
